@@ -1,0 +1,121 @@
+{
+  "navMenu": {
+    "aboutMe": "Про мене",
+    "video": "Відео",
+    "lessons": "Уроки",
+    "lang": "UA",
+    "singIn": "Увійти",
+    "singOut": "Вийти",
+    "signUp": "Зареєструватися"
+  },
+  "lendingText": {
+    "main": "Вивчай музику онлайн",
+    "motto": "Нехай музика тече через вашу душу в ритмі клаве"
+  },
+  "button": {
+    "orderALesson": "Записатися на урок   →",
+    "login": "Увійти",
+    "createProfile": "Створити Акаунт",
+    "sendInstructions": "Надіслати інструкції",
+    "signUp": "Зареєструватись",
+    "goHome": "На головну",
+    "resetPassword": "Змінити пароль",
+    "saveChanges": "Зберегти зміни",
+    "update": "Оновити",
+    "replace": "Замінити",
+    "delete": "Видалити",
+    "addAPhoto": "Додати фото",
+    "goBack": "Повернутися назад",
+    "dismiss": "Відміна"
+  },
+  "login": {
+    "errorWrongEmailOrPassword": "Невірний email або пароль",
+    "errorUserNotActivated": "Користувач не активований",
+    "forgotYourPassword": "Забули свій пароль",
+    "rememberMe": "Запам'ятати мене",
+    "newTo": "Вперше в OML?"
+  },
+  "errorMessages": {
+    "fieldIsRequired": "Це поле є обов'язковим",
+    "emailNotValid": "Електрона пошта має неправильний формат",
+    "passwordNotValid": "Пароль має неправильний формат",
+    "maxCharacters": "Максимум {{value}} символів",
+    "minCharacters": "Мінімум {{value}} символів",
+    "passwordsDoNotMatch": "Паролі не збігаються",
+    "smthGoesWrong": "Щось пішло не так",
+    "lowerThanMinValue": "Значення не може бути меньшим за {{value}}",
+    "greaterThanMaxValue": "Значення не може бути більшим за {{value}}",
+    "priceHasWrongFormat": "Не вірний формат ціни",
+    "wrongFieldFormat": "Поле заповнене не правильно"
+  },
+  "headTitles": {
+    "login": "Увійти",
+    "signUp": "Реєстрація"
+  },
+  "labels": {
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "firstName": "Ім'я",
+    "lastName": "Прізвище",
+    "confirmPassword": "Підтвердіть пароль",
+    "newPassword": "Новий пароль",
+    "confirmNewPassword": "Підтвердіть новий пароль",
+    "currentPassword": "Поточний пароль",
+    "description": "Опис",
+    "phoneNumber": "Номер мобільного телефону",
+    "instrument": "Інструмент"
+  },
+  "placeholders": {
+    "email": "sample@email.com",
+    "password": "Пароль",
+    "firstName": "Тарас",
+    "lastName": "Шевченко",
+    "phoneNumber": "+38 000 000 000",
+    "description": "Опис"
+  },
+  "footer": {
+    "allRightsReserved": "Всі права захищені"
+  },
+  "pageTitles": {
+    "login": "Вхід",
+    "signUp": "Реєстрація",
+    "forgotPassword": "Забули пароль?",
+    "instructionWasSent": "Інструкція надіслана",
+    "resetPassword": "Зміна паролю",
+    "myProfile": "Мій профіль",
+    "emailConfirmation": "Підтвердження електронної пошти",
+    "changePassword": "Зміна поролю",
+    "registerMyBusiness": "Реєстрація мого бізнесу",
+    "editBusiness": "Редагувати бізнес"
+  },
+  "helpText": {
+    "maxCharacters": "Максимум {{value}} символів",
+    "minCharacters": "Мінімум {{value}} символів",
+    "countCharacters": "{{from, number}}/{{to, number}} символів",
+    "commingSoon": "(Незабаром)"
+  },
+  "links": {
+    "login": "Увійти",
+    "signUp": "Зареєструватись",
+    "termOfUse": "Умови використання",
+    "privacyPolicy": "Політика конфіденційності",
+    "termOfUse1": "Умовами використання",
+    "privacyPolicy1": "Політикою конфіденційності"
+  },
+  "signUp": {
+    "alreadyHaveAnAccount": "Вже маєте акаунт?",
+    "bySigningUp": "Зареєструвавшись, Ви погоджуєтесь з",
+    "and": "та",
+    "errorUserAlreadyExists": "Користувач з таким імейлом вже існує"
+  },
+  "forgotPassword": {
+    "subtitle": "Не хвилюйтесь, ми надішлемо Вам інструкцію, як відновити його",
+    "instructionWasSent": {
+      "firstSubtitle": "Якщо у нас є обліковий запис, пов’язаний з цією електронною поштою, інструкція надійде з хвилини на хвилину.",
+      "lastSubtitle": "Не бачите електронного листа? Перевірте, будь ласка, папку зі спамом."
+    }
+  },
+  "emailConfirmation": {
+    "message": "Підтвердження електронної пошти пройшло успішно"
+  }
+}

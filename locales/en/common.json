@@ -1,0 +1,122 @@
+{
+  "navMenu": {
+    "aboutMe": "About me",
+    "video": "Video",
+    "lessons": "Lessons",
+    "lang": "EN",
+    "singIn": "Sing in",
+    "singOut": "Sing out",
+    "signUp": "Register"
+  },
+  "lendingText": {
+    "main": "Learn music online",
+    "motto": "Let the music flow through your soul in the rhythm of  clave"
+  },
+  "button": {
+    "orderALesson": "Order a lesson   →",
+    "login": "Log in",
+    "createProfile": "Create Profile",
+    "sendInstructions": "Send Instructions",
+    "signUp": "Sign up",
+    "goHome": "Go home",
+    "resetPassword": "Reset password",
+    "saveChanges": "Save changes",
+    "update": "Update",
+    "replace": "Replace",
+    "delete": "Delete",
+    "addAPhoto": "Add a photo",
+    "goBack": "Go back",
+    "dismiss": "Dismiss"
+  },
+  "login": {
+    "errorWrongEmailOrPassword": "Wrong email or password",
+    "errorUserNotActivated": "User not activated",
+    "forgotYourPassword": "Forgot your password",
+    "rememberMe": "Remember me",
+    "newTo": "New to OML?"
+  },
+  "errorMessages": {
+    "fieldIsRequired": "This field is required",
+    "emailNotValid": "Email has not valid format",
+    "passwordNotValid": "Password has not valid format",
+    "maxCharacters": "Maximum {{value}} characters long",
+    "minCharacters": "Minimum {{value}} characters long",
+    "passwordsDoNotMatch": "Your passwords do not match",
+    "smthGoesWrong": "Something goes wrong",
+    "lowerThanMinValue": "Value cannot be less than {{value}}",
+    "greaterThanMaxValue": "Value can not be greater than {{value}}",
+    "priceHasWrongFormat": "Price has wrong format",
+    "wrongFieldFormat": "Wrong field format"
+  },
+  "headTitles": {
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
+  "labels": {
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "confirmPassword": "Confirm Password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm New Password",
+    "currentPassword": "Current password",
+    "houseNoFlatNo": "House No, flat No",
+    "accountNumber": "Account number",
+    "recipient": "Recipient",
+    "description": "Description",
+    "phoneNumber": "Phone number",
+    "instrument": "Instrument"
+  },
+  "placeholders": {
+    "email": "sample@email.com",
+    "password": "Password",
+    "firstName": "John",
+    "lastName": "Smith",
+    "phoneNumber": "+38 000 000 000",
+    "description": "Description"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved"
+  },
+  "pageTitles": {
+    "login": "Log in",
+    "signUp": "Sign up",
+    "forgotPassword": "Forgot Password?",
+    "instructionWasSent": "Instruction was sent",
+    "resetPassword": "Reset password",
+    "myProfile": "My Profile",
+    "emailConfirmation": "Email confirmation",
+    "changePassword": "Change password"
+  },
+  "helpText": {
+    "maxCharacters": "Maximum {{value}} characters long",
+    "minCharacters": "Minimum {{value}} characters long",
+    "countCharacters": "{{from, number}}/{{to, number}} characters",
+    "commingSoon": "(Comming soon)"
+  },
+  "links": {
+    "login": "Log in",
+    "signUp": "Sign up",
+    "termOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+    "termOfUse1": "Terms of Use",
+    "privacyPolicy1": "Privacy Policy"
+  },
+  "signUp": {
+    "alreadyHaveAnAccount": "Already have an account?",
+    "bySigningUp": "By signing up, you agree to OML",
+    "and": "and",
+    "errorUserAlreadyExists": "User with such email already exists"
+  },
+  "forgotPassword": {
+    "subtitle": "No worries, we’ll send you the instruction how to restore it",
+    "instructionWasSent": {
+      "firstSubtitle": "If we have account associates with the email the instruction should come any minute now.",
+      "lastSubtitle": "Can’t see the email? Please, check the spam folder."
+    }
+  },
+  "emailConfirmation": {
+    "message": "Email confirmation was successful"
+  }
+}
