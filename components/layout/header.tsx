@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import useTranslation from "next-translate/useTranslation";
-import Link from "next/link";
 import {useRouter} from "next/router";
 import {HiOutlineMenuAlt4} from "react-icons/hi";
 import {IoCloseOutline} from 'react-icons/io5';
 import SelectLang from "../select-lang";
+import {useAppUser} from "../../contexts/user.context";
 
 export interface Header {
     pageMain: boolean;
@@ -13,6 +13,7 @@ export interface Header {
 const Header = ({pageMain}:Header) => {
     const { t, lang } = useTranslation('common');
     const router = useRouter();
+    const { isAuthorized, signOut } = useAppUser();
     const [langMenu, setLangMenu] = useState<boolean>(false);
 
     const closeLangMenu = () => {
@@ -23,10 +24,33 @@ const Header = ({pageMain}:Header) => {
             case true:
                 setLangMenu(false);
         }
-    }
+    };
+
+    const navigateTo = (link: string | Partial<URL>) => {
+        langMenu && closeLangMenu();
+        router.push(link).then();
+    };
+
+    useEffect(() => {
+        window.addEventListener('orientationchange', () => setLangMenu(false));
+        window.addEventListener('resize', e => {
+            if (langMenu && window.innerWidth > 770) {
+                setLangMenu(false);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        window.document.body.style.overflowY = langMenu ? 'hidden' : 'auto';
+    }, [langMenu]);
+
   return (
       <header className={`flex justify-between px-28 text-white py-6 ${pageMain ? '' : 'bg-primary'}`}>
-          <p className='text-4xl pt-0.5 cursor-pointer' onClick={() => router.push('/')}>OML</p>
+          {!isAuthorized ? (
+              <p className='text-4xl pt-0.5 cursor-pointer' onClick={() => router.push('/')}>OML</p>
+          ): (
+              <p className='text-4xl pt-0.5 cursor-pointer' onClick={() => router.push('/main')}>OML</p>
+          )}
           {pageMain && (
               <ul className='flex justify-center text-2xl pt-2'>
                   <li className='pl-32 cursor-pointer'>{t('navMenu.aboutMe')}</li>
@@ -35,14 +59,24 @@ const Header = ({pageMain}:Header) => {
               </ul>
           )}
           <div className='flex justify-center text-2xl '>
-              <div className='pr-10'>
+              <div className='pr-5'>
                   <div className="md:hidden cursor-pointer" onClick={() => closeLangMenu()}>
                       {langMenu ? <IoCloseOutline/> :
                       <HiOutlineMenuAlt4/>}
                   </div>
                   <SelectLang/>
               </div>
-              <p className='pt-1.5 cursor-pointer' onClick={() => router.push('/auth/login')}>{t('navMenu.singIn')}</p>
+              {!isAuthorized ? (
+                  <>
+                      <p className='pt-1.5 cursor-pointer' onClick={() => router.push('/auth/register')}>{t('navMenu.signUp')}</p>
+                      <p className='pt-1.5 cursor-pointer pl-5' onClick={() => router.push('/auth/login')}>{t('navMenu.singIn')}</p>
+                  </>
+              ) : (
+                  <>
+                      <p className='pt-1.5 cursor-pointer pr-5' onClick={() => signOut()}>{t('navMenu.singOut')}</p>
+                  </>
+              )
+              }
           </div>
       </header>
   )

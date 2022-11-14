@@ -1,7 +1,6 @@
 import {ChangeHandler, FieldError} from "react-hook-form";
 import React, {createRef, forwardRef, MouseEventHandler, useEffect, useState} from "react";
-import {HiCheckCircle, HiClipboard, HiOutlineExclamationCircle} from "react-icons/all";
-import {Instrument} from "../../infrastructure/constants/instruments";
+import { HiOutlineExclamationCircle} from "react-icons/all";
 
 export interface AppOptionProps {
     id?: string;
@@ -151,9 +150,9 @@ const AppOption: React.FC<AppOptionProps> = forwardRef<HTMLSelectElement, AppOpt
                 className={getInputStyle()}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                value={value}
                 onChange={onChange}
                 ref={ref}
+                defaultValue={value}
             >
                 {list.map((item, index) => (
                     <option

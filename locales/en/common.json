@@ -10,7 +10,13 @@
   },
   "lendingText": {
     "main": "Learn music online",
-    "motto": "Let the music flow through your soul in the rhythm of  clave"
+    "motto": "Let the music flow through your soul in the rhythm of  clave",
+    "chanChan": "Chan chan (cover)",
+    "concert": "Master's concert",
+    "aboutMe": "About me",
+    "inMay": "In May 2017 I graduated from the Ternopil Oblast Music College S.A.Krushelnitskoii with piano, as my specialization. In 2020 I defended my Master's degree in Musical and Arts Education at the Ternopil National Pedagogical University V. Hnatiuk.",
+    "firstSong": "I wrote my first song in 2017 and now there are almost 20 of them. Normally, I write lyrics and music myself, but composing the music for lyrics and poetry that were created by other authors is also one. In 2018 Social Dance became my passion, specifically salsa, bachata, zook. Cuban culture captivated me and I dived into educating myself in their musical styles and started composing salsa arrangements.",
+    "partTime": "As a part-time job I enjoy providing guitar and piano lessons to my students."
   },
   "button": {
     "orderALesson": "Order a lesson   →",
@@ -45,12 +51,19 @@
     "smthGoesWrong": "Something goes wrong",
     "lowerThanMinValue": "Value cannot be less than {{value}}",
     "greaterThanMaxValue": "Value can not be greater than {{value}}",
-    "priceHasWrongFormat": "Price has wrong format",
-    "wrongFieldFormat": "Wrong field format"
+    "wrongFieldFormat": "Wrong field format",
+    "phoneNotValid": "Phone number has not valid format",
+    "newEmailNotConfirm": "You cannot change your email, until you have confirmed the previous changes"
+  },
+  "successMessages": {
+    "success": "Success",
+    "emailRestored": "Email restored"
   },
   "headTitles": {
     "login": "Login",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "emailConfirmation": "Email confirmation",
+    "main": "Main"
   },
   "labels": {
     "email": "Email",
@@ -118,5 +131,10 @@
   },
   "emailConfirmation": {
     "message": "Email confirmation was successful"
+  },
+  "sidebar": {
+    "myProfile": "My profile",
+    "myLessons": "My lessons",
+    "schedule": "Schedule"
   }
 }
