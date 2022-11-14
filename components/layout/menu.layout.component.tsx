@@ -44,6 +44,14 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillCheckCircle />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/lessons' ? 'bg-primary-light' : ''}`}
                     />
+                    <NavigationListItem
+                        label={t('sidebar.myLessons')}
+                        onClick={() => {
+                            router.push('/user/lessons').then();
+                        }}
+                        prepend={<AiFillCheckCircle />}
+                        additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/lessons' ? 'bg-primary-light' : ''}`}
+                    />
                 </>
             ) :
                 (<></>
