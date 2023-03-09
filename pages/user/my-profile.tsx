@@ -61,7 +61,7 @@ const MyProfile: NextPage = () => {
     return (
         <SidebarLayout pageMain={false} title={t('sidebar.myProfile')} login={true}>
             <div className="w-full px-3 py-4 max-w-lg mx-auto flex flex-col items-center">
-                <h2 className='text-3xl'>Профіль</h2>
+                <h2 className='text-3xl'>{t('pageTitles.profile')}</h2>
                 <form className="w-full space-y-4" id='register_form' onSubmit={handleSubmit(onSubmit)}>
                     <AppField
                         type={'text'}

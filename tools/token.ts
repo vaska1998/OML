@@ -1,4 +1,5 @@
 import {setCookie} from "./cookie";
+import {UserRoles} from "../infrastructure/constants/roles";
 
 const getAtob = (): ((x: string) => string) => typeof window != 'undefined' ? window.atob : atob;
 export type AuthCredentials = {

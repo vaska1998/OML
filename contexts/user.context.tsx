@@ -10,6 +10,7 @@ import React, {useState, useContext} from "react";
 import {useRouter} from "next/router";
 import {AxiosProxy} from "../infrastructure/client/proxy/axios.proxy";
 import {setCookie} from "../tools/cookie";
+import {UserRoles} from "../infrastructure/constants/roles";
 
 export type AppUserProviderProps = {
     user: AuthCredentialsWithClaims | null;

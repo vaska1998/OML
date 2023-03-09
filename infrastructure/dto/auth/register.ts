@@ -1,4 +1,5 @@
 import {Instrument} from "../../constants/instruments";
+import {UserRoles} from "../../constants/roles";
 
 export type AuthRegisterRequest = {
     firstName: string;
