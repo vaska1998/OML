@@ -22,6 +22,7 @@ import { CurrentUser } from '../auth/current-user.type';
 import { GetUser } from '../auth/decorators/get-user.decorstor';
 import { UserUpdateRequestDto } from './dto/user-update.request.dto';
 import { UserUpdatePasswordRequestDto } from './dto/user.update.password.request.dto';
+import { UserRoles } from './enums/userRoles';
 
 @ApiTags('User')
 @Controller('user')
@@ -47,6 +48,25 @@ export class UserController {
   ): Promise<UserResDto> {
     const user = await this.userService.getById(currentUser.id);
     return UserResDto.encode(user);
+  }
+
+  @Get('/roles')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Retrieve the current user`s roles',
+  })
+  @ApiOkResponse({
+    description: 'Successfully retrieved current user`s roles',
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized',
+  })
+  @UseGuards(JwtAuthGuard)
+  async getCurrentUserRoles(
+    @GetUser() currentUser: CurrentUser,
+  ): Promise<UserRoles[]> {
+    const user = await this.userService.getById(currentUser.id);
+    return user.roles;
   }
 
   @Put('/current')

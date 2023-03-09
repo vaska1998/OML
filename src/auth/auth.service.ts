@@ -61,7 +61,10 @@ export class AuthService {
 
   async validatePassword(email: string, password: string): Promise<User> {
     const foundUser = await this.userService.getByEmail(email);
-    const passwordMatches = await bcrypt.compare(password, foundUser.password);
+    const passwordMatches = await bcrypt.compare(
+      password,
+      foundUser.hashedPassword,
+    );
     if (!passwordMatches) {
       throw new BadRequestException();
     }

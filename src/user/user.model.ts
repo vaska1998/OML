@@ -46,7 +46,7 @@ export class User {
   status: UserStatus;
 
   @Prop()
-  password: string;
+  hashedPassword: string;
 
   @Prop({
     default: null,

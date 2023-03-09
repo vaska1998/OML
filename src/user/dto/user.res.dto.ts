@@ -8,6 +8,7 @@ export class UserResDto {
       lastName: user.lastName,
       email: user.email,
       id: user._id,
+      phone: user.phone,
     };
   }
 
@@ -30,4 +31,9 @@ export class UserResDto {
     description: 'Email address',
   })
   public email: string;
+
+  @ApiProperty({
+    description: 'Phone number',
+  })
+  public phone: string;
 }

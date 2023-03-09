@@ -77,7 +77,6 @@ export class UserService {
     }
     return user;
   }
-
   async updateInfoById(
     id: string,
     content: UserUpdateRequestDto,
@@ -86,7 +85,7 @@ export class UserService {
     if (!user) {
       throw new NotFoundException(`User ${id} not found`);
     }
-    const { email, firstName, lastName } = {
+    const { email, firstName, lastName, phone } = {
       ...content,
       email: content.email.toLowerCase(),
     };
@@ -110,6 +109,7 @@ export class UserService {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        phone: phone,
       },
     });
     return user;
@@ -153,7 +153,7 @@ export class UserService {
     if (!user) {
       throw new NotFoundException();
     }
-    user.password = password;
+    user.hashedPassword = password;
     user.resetPasswordId = null;
     await user.save();
   }

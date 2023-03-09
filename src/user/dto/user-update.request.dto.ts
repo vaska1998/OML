@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsPhoneNumber, IsString, MinLength } from 'class-validator';
 import { UserConstants } from '../user.constants';
 
 export class UserUpdateRequestDto {
@@ -21,4 +21,10 @@ export class UserUpdateRequestDto {
   })
   @MinLength(UserConstants.Validation.LastName.minLength)
   lastName: string;
+
+  @ApiProperty({
+    description: 'User phone number',
+  })
+  @IsPhoneNumber()
+  phone?: string;
 }

@@ -654,7 +654,7 @@
     "webpack" "5.71.0"
     "webpack-node-externals" "3.0.0"
 
-"@nestjs/common@^6.0.0 || ^7.0.0 || ^8.0.0", "@nestjs/common@^7.0.0 || ^8.0.0", "@nestjs/common@^7.0.8 || ^8.0.0", "@nestjs/common@^8.0.0", "@nestjs/common@8.x":
+"@nestjs/common@^6.0.0 || ^7.0.0 || ^8.0.0", "@nestjs/common@^7.0.0 || ^8.0.0", "@nestjs/common@^7.0.8 || ^8.0.0", "@nestjs/common@^8.0.0", "@nestjs/common@^8.4.1", "@nestjs/common@8.x":
   "integrity" "sha512-QHi7QcgH/5Jinz+SCfIZJkFHc6Cch1YsAEGFEhi6wSp6MILb0sJMQ1CX06e9tCOAjSlBwaJj4PH0eFCVau5v9Q=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-8.4.4.tgz"
   "version" "8.4.4"
@@ -674,7 +674,7 @@
     "lodash" "4.17.21"
     "uuid" "8.3.2"
 
-"@nestjs/core@^6.0.0 || ^7.0.0 || ^8.0.0", "@nestjs/core@^8.0.0", "@nestjs/core@8.x":
+"@nestjs/core@^6.0.0 || ^7.0.0 || ^8.0.0", "@nestjs/core@^8.0.0", "@nestjs/core@^8.4.1", "@nestjs/core@8.x":
   "integrity" "sha512-Ef3yJPuzAttpNfehnGqIV5kHIL9SHptB5F4ERxoU7pT61H3xiYpZw6hSjx68cJO7cc6rm7/N+b4zeuJvFHtvBg=="
   "resolved" "https://registry.npmjs.org/@nestjs/core/-/core-8.4.4.tgz"
   "version" "8.4.4"
@@ -710,7 +710,7 @@
   "resolved" "https://registry.npmjs.org/@nestjs/passport/-/passport-8.2.1.tgz"
   "version" "8.2.1"
 
-"@nestjs/platform-express@^8.0.0":
+"@nestjs/platform-express@^8.0.0", "@nestjs/platform-express@^8.4.1":
   "integrity" "sha512-n/H83uzw154v6NVVSg6mniZIvYWtYp0dtNpU9O1qdEmDO030p0tBkeIRoDtpeOVvL2fW5PsHiUYS7HY4tNfykQ=="
   "resolved" "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-8.4.4.tgz"
   "version" "8.4.4"
