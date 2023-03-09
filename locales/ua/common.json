@@ -98,7 +98,8 @@
     "emailConfirmation": "Підтвердження електронної пошти",
     "changePassword": "Зміна поролю",
     "registerMyBusiness": "Реєстрація мого бізнесу",
-    "editBusiness": "Редагувати бізнес"
+    "editBusiness": "Редагувати бізнес",
+    "invite": "Запросити користувача"
   },
   "helpText": {
     "maxCharacters": "Максимум {{value}} символів",
@@ -133,6 +134,7 @@
   "sidebar": {
     "myProfile": "Мій профіль",
     "myLessons": "Мої уроки",
-    "schedule": "Розклад"
+    "schedule": "Розклад",
+    "invitation": "Запрошення"
   }
 }

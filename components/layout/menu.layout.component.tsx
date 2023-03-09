@@ -55,10 +55,19 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillSchedule />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/schedule' ? 'bg-primary-light' : ''}`}
                     />
-                    <hr/>
-                    <div className='mt-5'>
-                        6
-                    </div>
+                    {isAdmin && (
+                        <>
+                            <hr className='my-5'/>
+                            <NavigationListItem
+                                label={t('sidebar.invitation')}
+                                onClick={() => {
+                                    router.push('/admin/invitation').then();
+                                }}
+                                prepend={<AiFillSchedule />}
+                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/admin/invitation' ? 'bg-primary-light' : ''}`}
+                            />
+                        </>
+                    )}
                 </>
             ) :
                 (<></>

@@ -101,7 +101,8 @@
     "myProfile": "My Profile",
     "profile": "Profile",
     "emailConfirmation": "Email confirmation",
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "invite": "Invite user"
   },
   "helpText": {
     "maxCharacters": "Maximum {{value}} characters long",
@@ -136,6 +137,7 @@
   "sidebar": {
     "myProfile": "My profile",
     "myLessons": "My lessons",
-    "schedule": "Schedule"
+    "schedule": "Schedule",
+    "invitation": "Invitation"
   }
 }
