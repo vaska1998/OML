@@ -4,16 +4,13 @@ import {AppUserProvider, AppUserProviderProps} from "../contexts/user.context";
 import {AppTranslationProvider} from "../contexts/translation.context";
 import App from "next/app";
 import {getConnection} from "../tools/connection";
-import {AppRoleProvider} from "../contexts/admin.context";
 
 function MyApp({ Component, pageProps, client, user }: AppProps & AppUserProviderProps) {
   return (
       <AppUserProvider user={user} client={client}>
-          <AppRoleProvider>
             <AppTranslationProvider>
                 <Component {...pageProps} />
             </AppTranslationProvider>
-          </AppRoleProvider>
       </AppUserProvider>
   );
 };

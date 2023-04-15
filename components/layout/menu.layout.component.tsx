@@ -7,7 +7,7 @@ import {useAppUser} from "../../contexts/user.context";
 import NavigationListItem from "../nav/navigation.list.item";
 import {HiOutlineUserCircle} from "react-icons/hi";
 import {AiFillCheckCircle, AiFillSchedule} from "react-icons/ai";
-import {useAppRole} from "../../contexts/admin.context";
+import { UserRoles } from '../../infrastructure/constants/roles';
 
 type MenuLayoutComponentProps = {
     onClick?: () => unknown,
@@ -18,9 +18,8 @@ type State = StateFetchedBatch<ClientErrorResponse> | StateNamed<'FETCH'>;
 const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = ({ onClick }) => {
     const router = useRouter();
     const { t, lVal } = useAppTranslation();
-    const { isAuthorized } = useAppUser();
+    const { isAuthorized, user } = useAppUser();
     const [state, setState] = useState<State>( { type: 'EMPTY'});
-    const {isAdmin} = useAppRole();
 
     const navigateTo = (path: string | Partial<URL>) => {
         router.push(path).then();
@@ -55,7 +54,7 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillSchedule />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/schedule' ? 'bg-primary-light' : ''}`}
                     />
-                    {isAdmin && (
+                    {user?.claims.roles.includes(UserRoles.Admin) && (
                         <>
                             <hr className='my-5'/>
                             <NavigationListItem

@@ -25,6 +25,7 @@ const Register: NextPage = () => {
     const [hidePass, setHidePass] = useState<boolean>(true);
     const [state, setState] = useState<RegisterState>({ type: 'EMPTY'});
     const [instrument, setInstrument] = useState<Instrument>(Instrument.guitar);
+    const instrumentsArray = Object.values(Instrument);
 
     const statusToError = new Map<number, string>(
         [
@@ -57,7 +58,7 @@ const Register: NextPage = () => {
     return (
         <SidebarLayout pageMain={false} title={t('headTitles.signUp')}>
             <div className="w-full px-3 py-4 max-w-lg mx-auto flex flex-col items-center">
-                <div className="pb-4 text-2xl text-black font-semibold">{t('pageTitles.signUp')}</div>
+                <div className="pb-4 text-2xl text-black font-semibold mt-16 mb-4">{t('pageTitles.signUp')}</div>
                 <form onSubmit={handleSubmit(onSubmit, (a)=>{console.error(a)})} className="w-full space-y-4" id='register_form'>
                     <AppField
                         type={'text'}
@@ -81,7 +82,7 @@ const Register: NextPage = () => {
                     />
                     <AppOption
                         name={'instrument'}
-                        list={[Instrument.guitar, Instrument.piano]}
+                        list={instrumentsArray}
                         size={1}
                         label={t('labels.instrument')}
                         onChange={(e)=>setInstrument(e.target.value as Instrument) }

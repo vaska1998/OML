@@ -79,7 +79,8 @@
     "recipient": "Recipient",
     "description": "Description",
     "phoneNumber": "Phone number",
-    "instrument": "Instrument"
+    "instrument": "Instrument",
+    "role": "Role"
   },
   "placeholders": {
     "email": "sample@email.com",

@@ -76,7 +76,7 @@ const AppOption: React.FC<AppOptionProps> = forwardRef<HTMLSelectElement, AppOpt
     };
 
     const getLabelStyle = () => {
-        const _defaultStyle = 'text-sm text-gray-darker-1 block mb-2';
+        const _defaultStyle = 'text-sm text-dark font-bold block mb-2';
         return [_defaultStyle, labelClassName ?? ''].join(' ');
     };
 

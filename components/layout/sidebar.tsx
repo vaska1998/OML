@@ -40,8 +40,8 @@ const SidebarLayout: React.FunctionComponent<PropsWithChildren<SidebarLayoutsPro
                       <div className={'hidden md:block md:w-40 lg:w-60 shrink-0'}>
                           <AsideLayoutComponent/>
                       </div>
-                  )}
-                  <main className={'w-full border-gray'}>
+                  )} 
+                  <main className={`w-full border-gray ${pageMain ? '' : 'bg-page bg-cover bg-no-repeat h-screen bg-opacity-50'}`}>
                       {children}
                   </main>
               </div>

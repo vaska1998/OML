@@ -5,6 +5,7 @@ import {UserUpdateResponse} from "../dto/profile/user.update.response";
 import {UserUpdateRequest} from "../dto/profile/user.update.request";
 import {UpdatePasswordRequest} from "../dto/profile/update.password.request";
 import {UserRoles} from "../constants/roles";
+import { UpdateUserRoleRequest } from "../dto/profile/update.role.request";
 
 export class UserClient extends _RootClient {
     constructor(proxy: ProxyClient) {
@@ -21,6 +22,10 @@ export class UserClient extends _RootClient {
 
     updateCurrent(content: UserUpdateRequest): Promise<ClientResponse<UserUpdateResponse>> {
         return this.proxy.put('/user/current', content);
+    }
+
+    updateRole(content: UpdateUserRoleRequest): Promise<ClientResponse<Record<string, never>>> {
+        return this.proxy.post('/user/addRole', content)
     }
 
     updatePassword(content: UpdatePasswordRequest): Promise<ClientResponse<Record<string, never>>> {

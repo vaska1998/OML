@@ -74,7 +74,8 @@
     "currentPassword": "Поточний пароль",
     "description": "Опис",
     "phoneNumber": "Номер мобільного телефону",
-    "instrument": "Інструмент"
+    "instrument": "Інструмент",
+    "role": "Роль"
   },
   "placeholders": {
     "email": "sample@email.com",
