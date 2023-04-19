@@ -18,6 +18,8 @@ import { UserStatus } from './enums/user-status.enum';
 import { UserUpdateRequestDto } from './dto/user-update.request.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { UserUpdatePasswordRequestDto } from './dto/user.update.password.request.dto';
+import { UserAddRoleRequestDto } from './dto/userRole.update.request.dto';
+import { UserRoles } from './enums/userRoles';
 
 @Injectable()
 export class UserService {
@@ -60,6 +62,17 @@ export class UserService {
     }
     user.status = UserStatus.Active;
     await user.save();
+  }
+
+  async getRequestedTeachers(userId: string, onlyMy: boolean): Promise<User[]> {
+    if (!onlyMy) {
+      return this.userModel.find({
+        roles: { $in: [UserRoles.Admin] },
+      });
+    } else {
+      const user = await this.userModel.findById(userId);
+      return user.teachers as User[];
+    }
   }
 
   async getByEmail(email: string): Promise<User> {
@@ -156,5 +169,25 @@ export class UserService {
     user.hashedPassword = password;
     user.resetPasswordId = null;
     await user.save();
+  }
+
+  async addUserRole(userId: string, content: UserAddRoleRequestDto) {
+    const user = await this.userModel.findById(userId);
+    if (!user && !user.roles.includes(UserRoles.Admin)) {
+      throw new NotFoundException();
+    }
+
+    const { email, role } = content;
+    const userAddRole = await this.userModel.findOne({ email });
+    if (userAddRole) {
+      if (!userAddRole.roles.includes(role)) {
+        userAddRole.roles.push(role);
+        await userAddRole.save();
+      }
+      if (role == UserRoles.User) {
+        userAddRole.roles = [role];
+        await userAddRole.save();
+      }
+    }
   }
 }

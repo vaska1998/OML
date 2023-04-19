@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Logger,
+  Post,
   Put,
   UseGuards,
 } from '@nestjs/common';
@@ -22,7 +23,7 @@ import { CurrentUser } from '../auth/current-user.type';
 import { GetUser } from '../auth/decorators/get-user.decorstor';
 import { UserUpdateRequestDto } from './dto/user-update.request.dto';
 import { UserUpdatePasswordRequestDto } from './dto/user.update.password.request.dto';
-import { UserRoles } from './enums/userRoles';
+import { UserAddRoleRequestDto } from './dto/userRole.update.request.dto';
 
 @ApiTags('User')
 @Controller('user')
@@ -50,23 +51,24 @@ export class UserController {
     return UserResDto.encode(user);
   }
 
-  @Get('/roles')
+  @Post('/addRole')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Retrieve the current user`s roles',
+    summary: 'Add role for user',
   })
   @ApiOkResponse({
-    description: 'Successfully retrieved current user`s roles',
+    description: 'Successfully added new role to the user',
   })
   @ApiUnauthorizedResponse({
     description: 'Unauthorized',
   })
   @UseGuards(JwtAuthGuard)
-  async getCurrentUserRoles(
+  async addUserRole(
     @GetUser() currentUser: CurrentUser,
-  ): Promise<UserRoles[]> {
-    const user = await this.userService.getById(currentUser.id);
-    return user.roles;
+    @Body() content: UserAddRoleRequestDto,
+  ): Promise<Record<string, never>> {
+    await this.userService.addUserRole(currentUser.id, content);
+    return {};
   }
 
   @Put('/current')
@@ -89,6 +91,32 @@ export class UserController {
     const user = await this.userService.updateInfoById(currentUser.id, content);
     this.logger.log(`Updating user ${currentUser.id} info`);
     return UserResDto.encode(user);
+  }
+
+  @Get('/teachers')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Get all teachers',
+  })
+  @ApiOkResponse({
+    description: 'All requested teachers',
+    type: [UserResDto],
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized',
+  })
+  @UseGuards(JwtAuthGuard)
+  async getRequestedTeachers(
+    @GetUser() currentUser: CurrentUser,
+    @Body() onlyMy: boolean,
+  ): Promise<UserResDto[]> {
+    const teachers = await this.userService.getRequestedTeachers(
+      currentUser.id,
+      onlyMy,
+    );
+    return teachers.map((teacher) => {
+      return UserResDto.encode(teacher);
+    });
   }
 
   @Put('/password')

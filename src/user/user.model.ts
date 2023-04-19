@@ -42,6 +42,20 @@ export class User {
   })
   confirmationId: string;
 
+  @Prop({
+    type: [String],
+    ref: () => User,
+    default: null,
+  })
+  teachers?: User[];
+
+  @Prop({
+    type: [String],
+    ref: () => User,
+    default: null,
+  })
+  students?: User[];
+
   @Prop({ type: String, enum: UserStatus, default: UserStatus.New })
   status: UserStatus;
 
