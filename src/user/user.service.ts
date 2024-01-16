@@ -64,13 +64,11 @@ export class UserService {
     await user.save();
   }
 
-  async getRequestedTeachers(userId: string, onlyMy: boolean): Promise<User[]> {
-    if (!onlyMy) {
-      return this.userModel.find({
-        roles: { $in: [UserRoles.Admin] },
-      });
+  async getRequestedTeachers(userId: string): Promise<User[]> {
+    const user = await this.userModel.findById(userId);
+    if (user.roles.includes(UserRoles.Admin) || user.teachers) {
+      return this.userModel.find({ roles: { $in: [UserRoles.Admin] } });
     } else {
-      const user = await this.userModel.findById(userId);
       return user.teachers as User[];
     }
   }

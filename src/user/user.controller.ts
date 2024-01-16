@@ -108,11 +108,9 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   async getRequestedTeachers(
     @GetUser() currentUser: CurrentUser,
-    @Body() onlyMy: boolean,
   ): Promise<UserResDto[]> {
     const teachers = await this.userService.getRequestedTeachers(
       currentUser.id,
-      onlyMy,
     );
     return teachers.map((teacher) => {
       return UserResDto.encode(teacher);

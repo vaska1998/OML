@@ -8,6 +8,7 @@ import { configValidationSchema } from './config.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HealthController } from './health/health.controller';
 import { TerminusModule } from "@nestjs/terminus";
+import { LessonModule } from './lesson/lesson.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { TerminusModule } from "@nestjs/terminus";
       }),
       inject: [ConfigService],
     }),
+    LessonModule,
   ],
   controllers: [HealthController],
   providers: [AppService],
