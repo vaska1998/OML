@@ -169,6 +169,12 @@ const AppField: React.FC<AppFieldProps> = forwardRef<HTMLInputElement | HTMLText
         return error && error.type ? wrapIcon(<HiOutlineExclamationCircle />, 'text-red') : append != null ? wrapIcon(append, '') : null;
     };
 
+    const handleInvalid = (e: React.FormEvent<HTMLInputElement>) => {
+        if (type == 'email' && value && !value.toString().includes('@')) {
+            e.preventDefault();
+        }
+    };
+
     return (
         <div className={className}>
             {label && (
@@ -222,6 +228,7 @@ const AppField: React.FC<AppFieldProps> = forwardRef<HTMLInputElement | HTMLText
                         readOnly={readOnly}
                         maxLength={maxLength}
                         placeholder={placeholder}
+                        onInvalid={handleInvalid}
                         value={value}
                         step={step}
                         onKeyDown={(e) => {
