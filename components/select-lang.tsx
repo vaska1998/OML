@@ -30,7 +30,7 @@ export default function SelectLang() {
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
                 <div className="relative ">
-                    <Listbox.Button className="relative w-full pl-3 pr-10 py-2 text-left cursor-default sm:text-sm text-white cursor-pointer">
+                    <Listbox.Button className="relative w-full pl-3 pr-10 py-2 text-left sm:text-sm text-white cursor-pointer">
                         <span className="ml-2 block truncate text-2xl cursor-pointer">{selected.label}</span>
                         <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none ">
                             {open ? <IoIosArrowUp className="h-5 w-5 text-white text-2xl" aria-hidden="true" />:

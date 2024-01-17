@@ -8,6 +8,7 @@ module.exports = {
       backgroundImage: {
         'main': "url('/img/main.jpg')",
         'page': "url('/img/page.jpg')",
+        'me': "url('/img/7.png')",
       },
     },
     colors: {

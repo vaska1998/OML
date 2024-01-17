@@ -75,7 +75,10 @@
     "description": "Опис",
     "phoneNumber": "Номер мобільного телефону",
     "instrument": "Інструмент",
-    "role": "Роль"
+    "role": "Роль",
+    "teachers": "Викладачі",
+    "from": "Від",
+    "until": "До"
   },
   "placeholders": {
     "email": "sample@email.com",

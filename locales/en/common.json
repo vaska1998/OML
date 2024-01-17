@@ -80,7 +80,10 @@
     "description": "Description",
     "phoneNumber": "Phone number",
     "instrument": "Instrument",
-    "role": "Role"
+    "role": "Role",
+    "teachers": "Teachers",
+    "from": "From",
+    "until": "Until"
   },
   "placeholders": {
     "email": "sample@email.com",

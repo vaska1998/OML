@@ -6,6 +6,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer(nextTranslate({
   reactStrictMode: true,
+  server: {
+    host: '0.0.0.0',
+    port: '3000',
+  },
   eslint: {
     dirs: ['src/pages', 'src/infrastructure', 'src/store', 'src/components'],
   },

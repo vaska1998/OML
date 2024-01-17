@@ -34,10 +34,10 @@ const Home: NextPage = () => {
             </div>
         </div>
         <div className="flex justify-between mx-24 mt-24">
-            <div className="">
-                <img src="../public/img/7.png" alt="Me"/>
+            <div className='ml-24'>
+                <img src='/img/7.png'></img>
             </div>
-            <div className="mt-10">
+            <div className="mt-10 mr-24">
                 <h2 className="text-center text-4xl text-primary-light mb-5 pt-5">{t('lendingText.aboutMe')}</h2>
                 <p className="ml-10 max-w-xl indent-8">{t('lendingText.inMay')}</p>
                 <p className="ml-10 max-w-xl indent-8">{t('lendingText.firstSong')}</p>

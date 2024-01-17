@@ -45,25 +45,27 @@ const Header = ({pageMain}:Header) => {
     }, [langMenu]);
 
   return (
-      <header className={`flex justify-between px-28 text-white py-6 ${pageMain ? '' : 'bg-primary'}`}>
+      <header className={`flex justify-between xl:px-28 px-10 text-white py-6 ${pageMain ? '' : 'bg-primary'}`}>
           {!isAuthorized ? (
               <p className='text-4xl pt-0.5 cursor-pointer' onClick={() => router.push('/')}>OML</p>
           ): (
               <p className='text-4xl pt-0.5 cursor-pointer' onClick={() => router.push('/main')}>OML</p>
           )}
           {pageMain && (
-              <ul className='flex justify-center text-2xl pt-2'>
-                  <li className='pl-32 cursor-pointer'>{t('navMenu.aboutMe')}</li>
-                  <li className='px-24 cursor-pointer'>{t('navMenu.video')}</li>
+              <ul className='md:flex justify-center lg:text-2xl text-xl pt-2 hidden'>
+                  <li className='xl:pl-32 md:pl-6 cursor-pointer'>{t('navMenu.aboutMe')}</li>
+                  <li className='xl:px-24 md:px-6 cursor-pointer'>{t('navMenu.video')}</li>
                   <li className='cursor-pointer'>{t('navMenu.lessons')}</li>
               </ul>
           )}
-          <div className='flex justify-center text-2xl '>
-              <div className='pr-5'>
-                  <div className="md:hidden cursor-pointer" onClick={() => closeLangMenu()}>
-                      {langMenu ? <IoCloseOutline/> :
+          {pageMain && (
+              <div className="md:hidden cursor-pointer text-2xl" onClick={() => closeLangMenu()}>
+                  {langMenu ? <div className=''><IoCloseOutline/></div> :
                       <HiOutlineMenuAlt4/>}
-                  </div>
+              </div>
+          )}
+          <div className={`md:flex justify-center text-2xl ${pageMain ? 'hidden' : ''}`}>
+              <div className='pr-5'>
                   <SelectLang/>
               </div>
               {!isAuthorized ? (
