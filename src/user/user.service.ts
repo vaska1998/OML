@@ -170,10 +170,8 @@ export class UserService {
   }
 
   async addUserRole(userId: string, content: UserAddRoleRequestDto) {
-    const user = await this.userModel.findById(userId);
-    if (!user && !user.roles.includes(UserRoles.Admin)) {
-      throw new NotFoundException();
-    }
+    const user = await this.getById(userId);
+    await this.isUserAnAdmin(user);
 
     const { email, role } = content;
     const userAddRole = await this.userModel.findOne({ email });
@@ -186,6 +184,12 @@ export class UserService {
         userAddRole.roles = [role];
         await userAddRole.save();
       }
+    }
+  }
+
+  async isUserAnAdmin(user: User) {
+    if (!user.roles.includes(UserRoles.Admin)) {
+      throw new NotFoundException();
     }
   }
 }
