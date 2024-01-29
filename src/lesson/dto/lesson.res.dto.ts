@@ -1,5 +1,6 @@
 import { LessonStatusEnum } from '../enums/lesson-status.enum';
 import { ApiProperty } from '@nestjs/swagger';
+import { instrumentEnum } from '../../user/enums/instrument.enum';
 
 export class LessonResDto {
   @ApiProperty({
@@ -31,4 +32,14 @@ export class LessonResDto {
     description: 'Student`s Last name',
   })
   public studentLastName?: string;
+
+  @ApiProperty({
+    description: 'Instrument',
+  })
+  public instrument: instrumentEnum;
+
+  @ApiProperty({
+    description: 'Start Date',
+  })
+  public startDate: Date;
 }

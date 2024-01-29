@@ -1,15 +1,52 @@
-import { Controller, Get, HttpCode, HttpStatus, Logger, UseGuards } from "@nestjs/common";
-import { LessonService } from "./lesson.service";
-import { ApiOkResponse, ApiOperation, ApiUnauthorizedResponse } from "@nestjs/swagger";
-import { LessonResDto } from "./dto/lesson.res.dto";
-import { JwtAuthGuard } from "../guards/jwt-auth.guard";
-import { GetUser } from "../auth/decorators/get-user.decorstor";
-import { CurrentUser } from "../auth/current-user.type";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Logger,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import { LessonService } from './lesson.service';
+import {
+  ApiOkResponse,
+  ApiOperation,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import { LessonResDto } from './dto/lesson.res.dto';
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
+import { GetUser } from '../auth/decorators/get-user.decorstor';
+import { CurrentUser } from '../auth/current-user.type';
+import { CreateLessonDto } from './dto/create-lesson.dto';
 
 @Controller('lesson')
 export class LessonController {
   private logger = new Logger('LessonController');
   constructor(private readonly lessonService: LessonService) {}
+
+  @Post('/create')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Create a new lessons',
+  })
+  @ApiOkResponse({
+    description: 'Successfully created a new lesson',
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized',
+  })
+  @UseGuards(JwtAuthGuard)
+  async createLesson(
+    @GetUser() currentUser: CurrentUser,
+    @Body() content: CreateLessonDto,
+  ): Promise<Record<string, never>> {
+    this.logger.log('Creating new lesson');
+    await this.lessonService.createLesson(currentUser.id, content);
+    return {};
+  }
 
   @Get('/my')
   @HttpCode(HttpStatus.OK)
@@ -28,5 +65,25 @@ export class LessonController {
     @GetUser() currentUser: CurrentUser,
   ): Promise<LessonResDto[]> {
     return this.lessonService.getLessonsForCurrentUser(currentUser.id);
+  }
+
+  @Delete('/:id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Delete lesson by id',
+  })
+  @ApiOkResponse({
+    description: 'Succesfully deleted lesson by id',
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized',
+  })
+  @UseGuards(JwtAuthGuard)
+  async deleteLessonById(
+    @GetUser() currentUser: CurrentUser,
+    @Param('id') id: string,
+  ): Promise<Record<string, never>> {
+    await this.lessonService.deleteLessonById(currentUser.id, id);
+    return {};
   }
 }

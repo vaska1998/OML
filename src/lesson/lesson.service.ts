@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotAcceptableException, NotFoundException } from "@nestjs/common";
 import { InjectModel } from '@nestjs/mongoose';
 import { Lesson } from './lesson.model';
 import { Model } from 'mongoose';
@@ -14,8 +14,11 @@ export class LessonService {
     private readonly userService: UserService,
   ) {}
 
-  async createLesson(createLessonDto: CreateLessonDto): Promise<void> {
-    const { teacherId, instrument, startDate } = createLessonDto;
+  async createLesson(
+    teacherId: string,
+    createLessonDto: CreateLessonDto,
+  ): Promise<void> {
+    const { instrument, startDate } = createLessonDto;
     const user = await this.userService.getById(teacherId);
     await this.userService.isUserAnAdmin(user);
     const lesson = await this.lessonModel.create({
@@ -40,10 +43,28 @@ export class LessonService {
         teacherLastName: lesson.teacherId.lastName,
         studentFirstName: lesson.studentId.firstName,
         studentLastName: lesson.studentId.lastName,
+        instrument: lesson.instrument,
+        startDate: lesson.startDate,
       };
       lessonsRes.push(result);
     });
 
     return lessonsRes;
+  }
+
+  async deleteLessonById(userId: string, lessonId: string): Promise<void> {
+    const lesson = await this.lessonModel.findById(lessonId);
+    if (!lesson) {
+      throw new NotFoundException('Lesson was not found');
+    }
+
+    if (lesson.studentId._id == userId) {
+      lesson.studentId = undefined;
+      lesson.save();
+    } else if (lesson.teacherId._id == userId) {
+      await this.lessonModel.deleteOne({ _id: lessonId });
+    } else {
+      throw new NotAcceptableException('You don`t have permission');
+    }
   }
 }
