@@ -9,7 +9,7 @@ export class LessonClient extends _RootClient {
         super(proxy);
     }
 
-    getMyLessons(): Promise<ClientResponse<LessonResDto>> {
+    getMyLessons(): Promise<ClientResponse<LessonResDto[]>> {
         return this.proxy.get('/lesson/my');
     }
 

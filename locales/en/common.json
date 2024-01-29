@@ -32,7 +32,10 @@
     "delete": "Delete",
     "addAPhoto": "Add a photo",
     "goBack": "Go back",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "details": "Details",
+    "cancel": "Cancel",
+    "create": "Create"
   },
   "login": {
     "errorWrongEmailOrPassword": "Wrong email or password",
@@ -143,5 +146,13 @@
     "myLessons": "My lessons",
     "schedule": "Schedule",
     "invitation": "Invitation"
+  },
+  "table": {
+    "time": "Date of holding",
+    "status": "Status",
+    "student": "Student",
+    "teacher": "Teacher",
+    "instrument": "Instrument",
+    "action": "Action"
   }
 }

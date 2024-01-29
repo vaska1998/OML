@@ -30,7 +30,10 @@
     "delete": "Видалити",
     "addAPhoto": "Додати фото",
     "goBack": "Повернутися назад",
-    "dismiss": "Відміна"
+    "dismiss": "Відміна",
+    "details": "Деталі",
+    "cancel": "Відмінити",
+    "create": "Створити"
   },
   "login": {
     "errorWrongEmailOrPassword": "Невірний email або пароль",
@@ -140,5 +143,13 @@
     "myLessons": "Мої уроки",
     "schedule": "Розклад",
     "invitation": "Запрошення"
+  },
+  "table": {
+    "time": "Дата проведення",
+    "status": "Статус",
+    "student": "Студент",
+    "teacher": "Вчитель",
+    "instrument": "Іструмент",
+    "action": "Дія"
   }
 }
