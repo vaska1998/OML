@@ -4,7 +4,6 @@ import {ClientResponse} from "./response";
 import {UserUpdateResponse} from "../dto/profile/user.update.response";
 import {UserUpdateRequest} from "../dto/profile/user.update.request";
 import {UpdatePasswordRequest} from "../dto/profile/update.password.request";
-import {UserRoles} from "../constants/roles";
 import { UpdateUserRoleRequest } from "../dto/profile/update.role.request";
 import {TeacherListResponse} from "../dto/profile/teacher.list.response";
 

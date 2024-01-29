@@ -46,14 +46,6 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillCheckCircle />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/lessons' ? 'bg-primary-light' : ''}`}
                     />
-                    <NavigationListItem
-                        label={t('sidebar.schedule')}
-                        onClick={() => {
-                            router.push('/user/schedule').then();
-                        }}
-                        prepend={<AiFillSchedule />}
-                        additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/schedule' ? 'bg-primary-light' : ''}`}
-                    />
                     {user?.claims.roles.includes(UserRoles.Admin) && (
                         <>
                             <hr className='my-5'/>
@@ -64,6 +56,14 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                                 }}
                                 prepend={<AiFillSchedule />}
                                 additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/admin/invitation' ? 'bg-primary-light' : ''}`}
+                            />
+                            <NavigationListItem
+                                label={t('sidebar.schedule')}
+                                onClick={() => {
+                                    router.push('/admin/schedule').then();
+                                }}
+                                prepend={<AiFillSchedule />}
+                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/admin/schedule' ? 'bg-primary-light' : ''}`}
                             />
                         </>
                     )}
