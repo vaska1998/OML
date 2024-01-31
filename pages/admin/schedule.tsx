@@ -9,19 +9,19 @@ import {useEffect, useState} from "react";
 import { useAppUser } from "../../contexts/user.context";
 import {addDays} from "../../utils";
 import {getConnection} from "../../tools/connection";
-import {TeacherListResponse} from "../../infrastructure/dto/profile/teacher.list.response";
+import {UserListResponse} from "../../infrastructure/dto/profile/user-list.response";
 import {Calendar, DateLocalizer, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 
-type State = StateFetchedBatch<TeacherListResponse[], ClientErrorResponse> | StateNamed<'FETCH'>;
+type State = StateFetchedBatch<UserListResponse[], ClientErrorResponse> | StateNamed<'FETCH'>;
 const Schedule: NextPage = () => {
     const {t} = useTranslation('common');
     const {user} = useAppUser();
     const [state, setState] = useState<State>({type: 'EMPTY'});
-    const [teacherList, setTeacherList] = useState<TeacherListResponse[]>([]);
+    const [teacherList, setTeacherList] = useState<UserListResponse[]>([]);
     const [from, setFrom] = useState<Date>(new Date());
     const [until, setUntil] = useState<Date>(addDays(from, 30));
     const localize: DateLocalizer = momentLocalizer(moment);

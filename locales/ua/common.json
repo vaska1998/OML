@@ -33,7 +33,8 @@
     "dismiss": "Відміна",
     "details": "Деталі",
     "cancel": "Відмінити",
-    "create": "Створити"
+    "create": "Створити",
+    "save": "Зберегти"
   },
   "login": {
     "errorWrongEmailOrPassword": "Невірний email або пароль",
@@ -81,7 +82,9 @@
     "role": "Роль",
     "teachers": "Викладачі",
     "from": "Від",
-    "until": "До"
+    "until": "До",
+    "date": "Дата",
+    "time": "Час"
   },
   "placeholders": {
     "email": "sample@email.com",
@@ -151,5 +154,8 @@
     "teacher": "Вчитель",
     "instrument": "Іструмент",
     "action": "Дія"
+  },
+  "lesson": {
+    "new": "Створити новий урок"
   }
 }

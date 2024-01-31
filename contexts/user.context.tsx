@@ -6,11 +6,12 @@ import {
     saveTokenToCookie
 } from "../tools/token";
 import {ClientManagerType, createClientManager} from "../infrastructure/client/manager";
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import {useRouter} from "next/router";
 import {AxiosProxy} from "../infrastructure/client/proxy/axios.proxy";
 import {setCookie} from "../tools/cookie";
 import {UserRoles} from "../infrastructure/constants/roles";
+import {getConnection} from "../tools/connection";
 
 export type AppUserProviderProps = {
     user: AuthCredentialsWithClaims | null;
@@ -62,6 +63,15 @@ export const AppUserProvider: React.FC<AppUserProviderProps> = ({children, user,
         setIsAuthorized(false);
         router.push('/').then();
     };
+
+    useEffect(() => {
+        const {credentials: user} = getConnection();
+        setReactUser(user);
+        setIsAuthorized(!!user);
+        if (!user) {
+            return;
+        }
+    }, []);
     return (
         <AppUserContext.Provider
             value={{user: reactUser, isAuthorized, client: reactClient, signIn, signOut}}>

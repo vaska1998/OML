@@ -1,5 +1,6 @@
 import {setCookie} from "./cookie";
 import {UserRoles} from "../infrastructure/constants/roles";
+import {Instrument} from "../infrastructure/constants/instruments";
 
 const getAtob = (): ((x: string) => string) => typeof window != 'undefined' ? window.atob : atob;
 export type AuthCredentials = {
@@ -12,6 +13,7 @@ export type AuthCredentialClaims = {
     firstName: string;
     lastName: string;
     roles: UserRoles[];
+    instrument: Instrument[];
     iss: number;
     exp: number;
 };

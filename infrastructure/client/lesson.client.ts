@@ -13,7 +13,11 @@ export class LessonClient extends _RootClient {
         return this.proxy.get('/lesson/my');
     }
 
-    create(content: CreateLessonDto) {
+    create(content: CreateLessonDto): Promise<ClientResponse<LessonResDto>> {
         return this.proxy.post('/lesson/create', content);
+    }
+
+    deleteById(id: string): Promise<ClientResponse<void>> {
+        return this.proxy.del(`/lesson/${id}`);
     }
 }

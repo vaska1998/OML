@@ -8,20 +8,21 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {UpdateUserRoleRequest} from "../../infrastructure/dto/profile/update.role.request";
 import {StateFetchedBatch, StateNamed} from "../../infrastructure/state";
 import {ClientErrorResponse} from "../../infrastructure/client/response";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import AppOption from "../../components/common/option";
-import { UserRoles } from "../../infrastructure/constants/roles";
-import { getConnection } from "../../tools/connection";
-import { Notify } from "notiflix";
+import {UserRoles} from "../../infrastructure/constants/roles";
+import {getConnection} from "../../tools/connection";
+import {Notify} from "notiflix";
 import AppButton from "../../components/common/button";
 import StatusErrors from "../../components/common/status.errors";
-import { useAppUser } from "../../contexts/user.context";
+import {useAppUser} from "../../contexts/user.context";
 
 type State = StateFetchedBatch<Record<string, never>, ClientErrorResponse> | StateNamed<'FETCH'>;
 
 const Invitation: NextPage = () => {
     const {t} = useTranslation('common');
     const router = useRouter();
+    const { user } = useAppUser();
     const [state, setState] = useState<State>({ type: 'EMPTY'});
     const { register, handleSubmit, reset, formState: { errors }, setValue} = useForm<UpdateUserRoleRequest>();
     const [role, setRole] = useState<UserRoles>(UserRoles.User);
@@ -55,21 +56,23 @@ const Invitation: NextPage = () => {
             <div className="w-full px-3 py-4 max-w-lg mx-auto flex flex-col items-center">
                 <h2 className='text-3xl mt-16 mb-4'>{t('pageTitles.invite')}</h2>
                 <form className='w-full space-y-4 ' id='invitation_form' onSubmit={handleSubmit(onSubmit)}>
-                <AppField 
-                    type={'email'}
-                    label={t('labels.email')}
-                    {...register('email', {
-                        required: t('errorMessages.fieldIsRequired'),
-                    })}
-                />
-                <AppOption
-                    name={'role'}
-                    list={userRolesArray}
-                    size={1}
-                    label={t('labels.role')}
-                    onChange={(e)=>setRole(getRoleFromValue(e.target.value as UserRoles))}
-                    className="pb-4"
-                />
+                    <AppField
+                        type={'email'}
+                        label={t('labels.email')}
+                        {...register('email', {
+                            required: t('errorMessages.fieldIsRequired'),
+                        })}
+                    />
+                    {user?.claims.roles.includes(UserRoles.Admin) &&
+                        <AppOption
+                        name={'role'}
+                        list={userRolesArray}
+                        size={1}
+                        label={t('labels.role')}
+                        onChange={(e)=>setRole(getRoleFromValue(e.target.value as UserRoles))}
+                        className="pb-4"
+                        />
+                    }
                 {state.type == 'ERROR' && <div className={'mb-4'}><StatusErrors status={state.error.status} defaultError={defaultError}/></div>}
                     <AppButton type={'submit'} disabled={state.type == 'LOADING'}>
                         {t('button.saveChanges')}

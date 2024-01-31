@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StateFetchedBatch, StateNamed} from "../../infrastructure/state";
 import {ClientErrorResponse} from "../../infrastructure/client/response";
 import {useRouter} from "next/router";
@@ -7,7 +7,7 @@ import {useAppUser} from "../../contexts/user.context";
 import NavigationListItem from "../nav/navigation.list.item";
 import {HiOutlineUserCircle} from "react-icons/hi";
 import {AiFillCheckCircle, AiFillSchedule} from "react-icons/ai";
-import { UserRoles } from '../../infrastructure/constants/roles';
+import {UserRoles} from '../../infrastructure/constants/roles';
 
 type MenuLayoutComponentProps = {
     onClick?: () => unknown,
@@ -46,24 +46,24 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillCheckCircle />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/lessons' ? 'bg-primary-light' : ''}`}
                     />
-                    {user?.claims.roles.includes(UserRoles.Admin) && (
+                    {user?.claims.roles.includes(UserRoles.Teacher || UserRoles.Admin) && (
                         <>
                             <hr className='my-5'/>
                             <NavigationListItem
                                 label={t('sidebar.invitation')}
                                 onClick={() => {
-                                    router.push('/admin/invitation').then();
+                                    router.push('/teacher/invitation').then();
                                 }}
                                 prepend={<AiFillSchedule />}
-                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/admin/invitation' ? 'bg-primary-light' : ''}`}
+                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/teacher/invitation' ? 'bg-primary-light' : ''}`}
                             />
                             <NavigationListItem
                                 label={t('sidebar.schedule')}
                                 onClick={() => {
-                                    router.push('/admin/schedule').then();
+                                    router.push('/teacher/schedule').then();
                                 }}
                                 prepend={<AiFillSchedule />}
-                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/admin/schedule' ? 'bg-primary-light' : ''}`}
+                                additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/teacher/schedule' ? 'bg-primary-light' : ''}`}
                             />
                         </>
                     )}

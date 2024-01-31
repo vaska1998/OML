@@ -5,7 +5,7 @@ import {HiCheckCircle, HiClipboard, HiOutlineExclamationCircle} from "react-icon
 export type AppFieldProps = {
     id?: string;
     name: string;
-    type: 'text' | 'number' | 'password' | 'date' | 'email' | 'tel' | 'url' | 'search' | 'hidden';
+    type: 'text' | 'number' | 'password' | 'date' | 'email' | 'tel' | 'url' | 'search' | 'hidden' | 'time';
     isSuccess?: boolean;
     disabled?: boolean;
     label?: string;

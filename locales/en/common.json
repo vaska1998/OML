@@ -35,7 +35,8 @@
     "dismiss": "Dismiss",
     "details": "Details",
     "cancel": "Cancel",
-    "create": "Create"
+    "create": "Create",
+    "save": "Save"
   },
   "login": {
     "errorWrongEmailOrPassword": "Wrong email or password",
@@ -86,7 +87,9 @@
     "role": "Role",
     "teachers": "Teachers",
     "from": "From",
-    "until": "Until"
+    "until": "Until",
+    "date": "Date",
+    "time": "Time"
   },
   "placeholders": {
     "email": "sample@email.com",
@@ -154,5 +157,8 @@
     "teacher": "Teacher",
     "instrument": "Instrument",
     "action": "Action"
+  },
+  "lesson": {
+    "new": "Create new lesson"
   }
 }
