@@ -1,6 +1,6 @@
 import {ChangeHandler, FieldError} from "react-hook-form";
 import React, {createRef, forwardRef, MouseEventHandler, useEffect, useState} from "react";
-import { HiOutlineExclamationCircle} from "react-icons/all";
+import {HiOutlineExclamationCircle} from "react-icons/hi";
 
 export interface AppOptionProps {
     id?: string;

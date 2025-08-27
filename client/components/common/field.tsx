@@ -1,6 +1,6 @@
 import React, {createRef, forwardRef, MouseEventHandler, useEffect, useState} from "react";
 import {ChangeHandler, FieldError} from "react-hook-form";
-import {HiCheckCircle, HiClipboard, HiOutlineExclamationCircle} from "react-icons/all";
+import {HiCheckCircle, HiClipboard, HiOutlineExclamationCircle} from "react-icons/hi";
 
 export type AppFieldProps = {
     id?: string;
