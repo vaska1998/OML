@@ -105,12 +105,10 @@ export class UserService {
     if (isEmailAlreadyInUse) {
       throw new NotAcceptableException(`Email ${email} already in use`);
     }
-    await user.update({
-      $set: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      },
+    user.set({
+      firstName,
+      lastName,
+      email,
     });
     return user;
   }
@@ -130,10 +128,8 @@ export class UserService {
     const newPassword = await this.authService.hashPassword(
       content.newPassword,
     );
-    await user.update({
-      $set: {
-        password: newPassword,
-      },
+    user.set({
+      password: newPassword,
     });
     return {};
   }
