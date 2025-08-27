@@ -40,6 +40,7 @@ const MyLessons: NextPage = () => {
     const [studentId, setStudentId] = useState<string>('');
     const defaultError = t('errorMessages.smthGoesWrong');
 
+
     useEffect(() => {
         const { client } = getConnection();
         setState({
@@ -58,20 +59,22 @@ const MyLessons: NextPage = () => {
                 });
             }
         });
-        client.user.getUserStudents().then(response => {
-            if (response.type === 'SUCCESS') {
-                setState({
-                    type: 'EMPTY',
-                });
-                setStudentArray(response.result);
-                setStudentId(response.result[0].id);
-            } else {
-                setState({
-                    type: 'ERROR',
-                    error: response,
-                });
-            }
-        })
+        if (user?.claims.roles.includes(UserRoles.Teacher)) {
+            client.user.getUserStudents().then(response => {
+                if (response.type === 'SUCCESS') {
+                    setState({
+                        type: 'EMPTY',
+                    });
+                    setStudentArray(response.result);
+                    setStudentId(response.result[0].id);
+                } else {
+                    setState({
+                        type: 'ERROR',
+                        error: response,
+                    });
+                }
+            })
+        }
     }, []);
 
     useEffect(() => {
@@ -136,10 +139,16 @@ const MyLessons: NextPage = () => {
         });
     }
 
+    const findEmail = (text: string) => {
+        const regularExpression = /\S+@\S+\.\S+/;
+        const result = text.match(regularExpression);
+        return result ? result[0]: [];
+    }
+
     return (
         <SidebarLayout pageMain={false} title={t('sidebar.myLessons')} login={true}>
             <div className='w-full pt-4 px-3 flex justify-end'>
-                {user?.claims.roles.includes(UserRoles.Admin) &&
+                {user?.claims.roles.includes(UserRoles.Teacher) &&
                     <div><Button onClick={() => setIsPopupOpen(true)}>{t('button.create')}</Button></div>
                 }
             </div>
@@ -150,7 +159,7 @@ const MyLessons: NextPage = () => {
                         <td className='text-primary py-4 pl-4'>{t('table.time')}</td>
                         <td className='text-primary py-4'>{t('table.status')}</td>
                         <td className='text-primary py-4'>{t('table.teacher')}</td>
-                        <td className='text-primary py-4'>{t('table.studentId')}</td>
+                        <td className='text-primary py-4'>{t('table.student')}</td>
                         <td className='text-primary py-4'>{t('table.instrument')}</td>
                         <td className='text-primary py-4'>{t('table.action')}</td>
                     </tr>
@@ -183,10 +192,16 @@ const MyLessons: NextPage = () => {
                 <form onSubmit={handleSubmit(createLesson)} className='mx-4' noValidate>
                     <AppOption
                         name={'studentId'}
-                        list={studentArray.map(item => {return item.lastName + ' ' + item.firstName})}
+                        list={studentArray.map(item => {
+                            return item.lastName + ' ' + item.firstName.charAt(0).toUpperCase() + '. (' + item.email + ')';
+                        })}
                         size={1}
-                        label={t('labels.studentId')}
+                        label={t('table.student')}
                         className='mb-4'
+                        onChange={(e) => {
+                            console.log(findEmail(e.target.value));
+                        }}
+
                     />
                     <AppOption
                         name={'instrument'}

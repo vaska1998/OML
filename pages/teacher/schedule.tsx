@@ -58,7 +58,7 @@ const Schedule: NextPage = () => {
                 <div className='flex flex-row w-full max-w-lg mx-auto my-4'>
                     <AppOption
                         name={'teacher'}
-                        list={teacherList.map(item => {return item.lastName + ' ' + item.firstName})}
+                        list={teacherList.map(item => {return item.lastName + ' ' + item.firstName.charAt(0) + '. (' + item.email + ')'})}
                         size={1}
                         label={t('labels.teachers')}
                         className={'w-full'}

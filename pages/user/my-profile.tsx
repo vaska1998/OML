@@ -88,7 +88,7 @@ const MyProfile: NextPage = () => {
                         error={errors.email}
                         {...register('email', {
                             required: t('errorMessages.fieldIsRequired'),
-                            pattern: { value: patternEmail, message: t('errorMessages.email.NotValid')}
+                            pattern: { value: patternEmail, message: t('errorMessages.emailNotValid')}
                         })}
                     />
                     <AppField

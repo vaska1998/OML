@@ -46,7 +46,7 @@ const MenuLayoutComponent: React.FunctionComponent<MenuLayoutComponentProps> = (
                         prepend={<AiFillCheckCircle />}
                         additionalStyle={`py-3 mb-4 pl-3 text-white ${router.asPath == '/user/lessons' ? 'bg-primary-light' : ''}`}
                     />
-                    {user?.claims.roles.includes(UserRoles.Teacher || UserRoles.Admin) && (
+                    {user?.claims.roles.includes(UserRoles.Teacher) && (
                         <>
                             <hr className='my-5'/>
                             <NavigationListItem
