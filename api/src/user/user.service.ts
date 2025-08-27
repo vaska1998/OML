@@ -153,7 +153,7 @@ export class UserService {
     if (!user) {
       throw new NotFoundException();
     }
-    user.password = password;
+    user.hashedPassword = password;
     user.resetPasswordId = null;
     await user.save();
   }

@@ -46,12 +46,22 @@ export class User {
   status: UserStatus;
 
   @Prop()
-  password: string;
+  hashedPassword: string;
 
   @Prop({
     default: null,
   })
   resetPasswordId?: string;
+
+  @Prop({
+    default: [],
+  })
+  students: User[];
+
+  @Prop({
+    default: [],
+  })
+  teachers: User[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
