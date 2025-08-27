@@ -7,7 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HealthController } from './health/health.controller';
-import { TerminusModule } from "@nestjs/terminus";
+import { TerminusModule } from '@nestjs/terminus';
 
 @Module({
   imports: [
