@@ -73,6 +73,16 @@ export class UserService {
     }
   }
 
+  async getUserStudents(userId: string): Promise<User[]> {
+    const user = await this.userModel.findById(userId).populate('students');
+    if (!user.roles.includes(UserRoles.Admin)) {
+      throw new NotAcceptableException('You don`t have permission');
+    }
+
+    const students = user.students;
+    return [...students];
+  }
+
   async getByEmail(email: string): Promise<User> {
     const user = await this.userModel.findOne({ email });
     if (!user) {
@@ -182,6 +192,11 @@ export class UserService {
       }
       if (role == UserRoles.User) {
         userAddRole.roles = [role];
+        userAddRole.teachers = [...userAddRole.teachers, user];
+        await this.userModel.updateOne(
+          { _id: userId },
+          { students: [...user.students, userAddRole] },
+        );
         await userAddRole.save();
       }
     }

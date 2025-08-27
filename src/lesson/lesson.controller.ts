@@ -42,10 +42,13 @@ export class LessonController {
   async createLesson(
     @GetUser() currentUser: CurrentUser,
     @Body() content: CreateLessonDto,
-  ): Promise<Record<string, never>> {
+  ): Promise<LessonResDto> {
     this.logger.log('Creating new lesson');
-    await this.lessonService.createLesson(currentUser.id, content);
-    return {};
+    const lesson = await this.lessonService.createLesson(
+      currentUser.id,
+      content,
+    );
+    return LessonResDto.encode(lesson);
   }
 
   @Get('/my')
@@ -64,7 +67,10 @@ export class LessonController {
   async getCurrentUserLessons(
     @GetUser() currentUser: CurrentUser,
   ): Promise<LessonResDto[]> {
-    return this.lessonService.getLessonsForCurrentUser(currentUser.id);
+    const lessons = await this.lessonService.getLessonsForCurrentUser(
+      currentUser.id,
+    );
+    return lessons.map((lesson) => LessonResDto.encode(lesson));
   }
 
   @Delete('/:id')

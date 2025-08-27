@@ -1,5 +1,7 @@
 import { User } from '../user.model';
 import { ApiProperty } from '@nestjs/swagger';
+import { UserRoles } from '../enums/userRoles';
+import { instrumentEnum } from '../enums/instrument.enum';
 
 export class UserResDto {
   public static encode(user: User): UserResDto {
@@ -9,6 +11,8 @@ export class UserResDto {
       email: user.email,
       id: user._id,
       phone: user.phone,
+      instrument: user.instrument,
+      roles: user.roles,
     };
   }
 
@@ -36,4 +40,14 @@ export class UserResDto {
     description: 'Phone number',
   })
   public phone: string;
+
+  @ApiProperty({
+    description: 'User roles',
+  })
+  public roles: UserRoles[];
+
+  @ApiProperty({
+    description: 'Instruments',
+  })
+  public instrument: instrumentEnum[];
 }

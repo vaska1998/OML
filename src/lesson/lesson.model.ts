@@ -23,10 +23,10 @@ export class Lesson {
   })
   status: LessonStatusEnum;
 
-  @Prop({ type: [String], ref: () => User })
+  @Prop({ type: String, ref: () => User })
   teacherId: User;
 
-  @Prop({ type: [String], ref: () => User, default: null })
+  @Prop({ type: String, ref: () => User, default: null })
   studentId?: User;
 
   @Prop({ type: String, enum: instrumentEnum })

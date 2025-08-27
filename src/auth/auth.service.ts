@@ -48,13 +48,14 @@ export class AuthService {
   }
 
   generateAccessToken(user: User): string {
-    const { email, _id, firstName, lastName, roles } = user;
+    const { email, _id, firstName, lastName, roles, instrument } = user;
     const payload: JwtPayload = {
       id: _id,
       email,
       firstName,
       lastName,
       roles,
+      instrument,
     };
     return this.jwtService.sign(payload);
   }

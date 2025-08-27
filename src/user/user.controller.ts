@@ -117,6 +117,28 @@ export class UserController {
     });
   }
 
+  @Get('/students')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Get all students',
+  })
+  @ApiOkResponse({
+    description: 'All requested teachers',
+    type: [UserResDto],
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Unauthorized',
+  })
+  @UseGuards(JwtAuthGuard)
+  async getRequestedStudents(
+    @GetUser() currentUser: CurrentUser,
+  ): Promise<UserResDto[]> {
+    const students = await this.userService.getUserStudents(currentUser.id);
+    return students.map((student) => {
+      return UserResDto.encode(student);
+    });
+  }
+
   @Put('/password')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
