@@ -2,6 +2,7 @@ import React, {PropsWithChildren} from "react";
 import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
+import AsideLayoutComponent from "./aside.layout.component";
 
 interface SidebarLayoutsProps {
     title?: string;
@@ -36,9 +37,11 @@ const SidebarLayout: React.FunctionComponent<PropsWithChildren<SidebarLayoutsPro
               <Header pageMain={pageMain}/>
               <div className={`flex flex-row min-h-aside-sm md:min-h-aside`}>
                   {login && (
-                      <div className={'hidden md:block md:w-60 lg:w-80 shrink-0'}></div>
+                      <div className={'hidden md:block md:w-40 lg:w-60 shrink-0'}>
+                          <AsideLayoutComponent/>
+                      </div>
                   )}
-                  <main className={'w-full md:border-l border-gray'}>
+                  <main className={'w-full border-gray'}>
                       {children}
                   </main>
               </div>

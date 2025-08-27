@@ -46,4 +46,4 @@ export const AppTranslationProvider: React.FC = ({children}) => {
     );
 };
 
-export const userAppTranslation = () => useContext(AppTranslationContext);
+export const useAppTranslation = () => useContext(AppTranslationContext);

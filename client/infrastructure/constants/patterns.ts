@@ -3,3 +3,4 @@ export const patternEmail =
 export const patternPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+,.\\/;:"-]).{8,}$/;
 export const patternDigital = '[0-9]+';
 export const patternPrice = /^\d+(\.\d{1,2})?$/ig;
+export const patternPhoneNumber = /^\+\d{12}$/;

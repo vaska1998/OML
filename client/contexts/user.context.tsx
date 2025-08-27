@@ -69,4 +69,4 @@ export const AppUserProvider: React.FC<AppUserProviderProps> = ({children, user,
     );
 };
 
-export const userAppUser = () => useContext(AppUserContext)!;
+export const useAppUser = () => useContext(AppUserContext)!;

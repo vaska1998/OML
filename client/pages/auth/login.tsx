@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {getConnection} from "../../tools/connection";
-import {userAppUser} from "../../contexts/user.context";
+import {useAppUser} from "../../contexts/user.context";
 import SidebarLayout from "../../components/layout/sidebar";
 import AppField from "../../components/common/field";
 import {patternEmail} from "../../infrastructure/constants/patterns";
@@ -37,7 +37,7 @@ const Login: NextPage = () => {
     const router = useRouter();
     const [state, setState] = useState<State>({type: 'EMPTY'});
     const [hidePass, setHidePass] = useState<boolean>(true);
-    const {signIn} = userAppUser();
+    const {signIn} = useAppUser();
     const statusToError = new Map<number, string>(
         [
             [400, t('login.errorWrongEmailOrPassword')],
@@ -81,7 +81,7 @@ const Login: NextPage = () => {
                     query: updatedQuery
                 }).then();
             } else {
-                router.push('/').then();
+                router.push('/main').then();
             }
         } else {
             setState({
@@ -101,7 +101,7 @@ const Login: NextPage = () => {
                         label={t('labels.email')}
                         placeholder={t('placeholders.email')}
                         {...register('email', {
-                            required: t('errorMessages.fieldIsRequires'),
+                            required: t('errorMessages.fieldIsRequired'),
                             pattern: {
                                 value: patternEmail,
                                 message: t('errorMessages.emailNotValid'),
@@ -116,7 +116,7 @@ const Login: NextPage = () => {
                         append={hidePass ? <HiOutlineEyeOff/> : <HiOutlineEye/>}
                         appendClick={_ => setHidePass(!hidePass)}
                         {...register('password', {
-                            required: t('errorMessaged.fieldIsRequires'),
+                            required: t('errorMessages.fieldIsRequired'),
                             minLength: {
                                 value: passwordMinLength,
                                 message: t('errorMessages.minCharacters', {value: passwordMinLength}),
