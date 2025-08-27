@@ -2,11 +2,17 @@ import axios, {Axios, AxiosError} from "axios";
 import {ClientErrorResponse, ClientResponse} from "../response";
 import {ProxyClient} from "./proxy";
 
+interface NestErrorResponse {
+    statusCode: number;
+    message: string | string[];
+    error: string;
+}
+
 const handleNestError = (error?: AxiosError | unknown): ClientErrorResponse => {
     let axiosError!: AxiosError;
     if (error && (axiosError = error as AxiosError) != null && axiosError.response) {
         const { data, status, statusText } = axiosError.response;
-        const { error, message } = data;
+        const { error, message } = data as NestErrorResponse;
         return {
             type: 'ERROR',
             status,
