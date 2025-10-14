@@ -45,8 +45,9 @@ export class UserService {
       lastName,
       hashedPassword: hashedPassword,
       instrument,
+      status: UserStatus.Active,
     });
-    //await this.emailService.sendAccountConfirmationEmail(user);
+    await this.emailService.sendAccountConfirmationEmail(user);
     await user.save();
   }
 

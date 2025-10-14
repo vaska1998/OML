@@ -48,9 +48,9 @@ export class EmailService {
       .setTemplateId(
         EmailConstants.Templates.AccountConfirmationTemplate.TemplateId,
       );
-    // this.sender.send(emailParams).catch((err) => {
-    //   this.logger.error(err);
-    // });
+    this.sender.send(emailParams).catch((err) => {
+      this.logger.error(err);
+    });
     console.log(emailParams);
   }
 
