@@ -53,9 +53,9 @@ const Header = ({pageMain}:Header) => {
           )}
           {pageMain && (
               <ul className='flex justify-center text-2xl pt-2'>
-                  <li className='pl-32 cursor-pointer'>{t('navMenu.aboutMe')}</li>
-                  <li className='px-24 cursor-pointer'>{t('navMenu.video')}</li>
-                  <li className='cursor-pointer'>{t('navMenu.lessons')}</li>
+                  <li className='pl-32 cursor-pointer' onClick={() => router.push('/#aboutMe')}>{t('navMenu.aboutMe')}</li>
+                  <li className='px-24 cursor-pointer' onClick={() => router.push('/#video')}>{t('navMenu.video')}</li>
+                  <li className='cursor-pointer' onClick={() => router.push('/#request')}>{t('navMenu.lessons')}</li>
               </ul>
           )}
           <div className='flex justify-center text-2xl '>
